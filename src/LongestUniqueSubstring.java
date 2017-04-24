@@ -72,10 +72,4 @@ public class LongestUniqueSubstring
         int len = longestUniqueSubsttr(str);
         System.out.println("The length of the longest non-repeating character substring is " + len);
     }
-
-    /* A utility function to get the minimum of two integers */
-    private int min(int a, int b)
-    {
-        return (a > b) ? b : a;
-    }
 }
