@@ -6,12 +6,6 @@ import java.util.Map;
  */
 public class LongestUniqueSubstring
 {
-    /* A utility function to get the minimum of two integers */
-    private int min(int a, int b)
-    {
-        return (a > b) ? b : a;
-    }
-
     private static int longestUniqueSubsttr(String str)
     {
         int n = str.length();
@@ -30,16 +24,9 @@ public class LongestUniqueSubstring
        as 1, and visited[str[0]] is set */
         for (int i = 1; i < n; i++)
         {
-            if (visited.containsKey(str.charAt(i)))
-            {
-                prev_index = visited.get(str.charAt(i));
-            }
-            else
-            {
-                prev_index = -1;
-            }
+            prev_index = visited.getOrDefault(str.charAt(i), -1);
 
-        /* If the currentt character is not present in the
+        /* If the current character is not present in the
            already processed substring or it is not part of
            the current NRCS, then do cur_len++ */
             if (prev_index == -1 || i - cur_len > prev_index)
@@ -84,5 +71,11 @@ public class LongestUniqueSubstring
         System.out.println("The input string is " + str);
         int len = longestUniqueSubsttr(str);
         System.out.println("The length of the longest non-repeating character substring is " + len);
+    }
+
+    /* A utility function to get the minimum of two integers */
+    private int min(int a, int b)
+    {
+        return (a > b) ? b : a;
     }
 }
