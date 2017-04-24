@@ -9,7 +9,7 @@ public class LongestUniqueSubstring
     private static int longestUniqueSubsttr(String str)
     {
         int n = str.length();
-        int cur_len = 1;  // lenght of current substring
+        int cur_len = 1;  // length of current substring
         int max_len = 1;  // result
         int prev_index;  //  previous index
         Map<Character, Integer> visited = new HashMap<Character, Integer>();
