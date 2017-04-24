@@ -9,10 +9,9 @@ public class LongestUniqueSubstring
     private static int longestUniqueSubsttr(String str)
     {
         int n = str.length();
-        int cur_len = 1;  // length of current substring
-        int max_len = 1;  // result
-        int prev_index;  //  previous index
-        Map<Character, Integer> visited = new HashMap<Character, Integer>();
+        int curLen = 1;  // length of current substring
+        int maxLen = 1;  // result
+        Map<Character, Integer> visited = new HashMap<>();
 
 
     /* Mark first character as visited by storing the index
@@ -24,14 +23,14 @@ public class LongestUniqueSubstring
        as 1, and visited[str[0]] is set */
         for (int i = 1; i < n; i++)
         {
-            prev_index = visited.getOrDefault(str.charAt(i), -1);
+            int prevIndex = visited.getOrDefault(str.charAt(i), -1);
 
         /* If the current character is not present in the
            already processed substring or it is not part of
            the current NRCS, then do cur_len++ */
-            if (prev_index == -1 || i - cur_len > prev_index)
+            if (prevIndex == -1 || i - curLen > prevIndex)
             {
-                cur_len++;
+                curLen++;
             }
 
         /* If the current character is present in currently
@@ -43,11 +42,11 @@ public class LongestUniqueSubstring
                should also check whether length of the
                previous NRCS was greater than max_len or
                not.*/
-                if (cur_len > max_len)
+                if (curLen > maxLen)
                 {
-                    max_len = cur_len;
+                    maxLen = curLen;
                 }
-                cur_len = i - prev_index;
+                curLen = i - prevIndex;
             }
 
             // update the index of current character
@@ -56,12 +55,12 @@ public class LongestUniqueSubstring
 
         // Compare the length of last NRCS with max_len and
         // update max_len if needed
-        if (cur_len > max_len)
+        if (curLen > maxLen)
         {
-            max_len = cur_len;
+            maxLen = curLen;
         }
 
-        return max_len;
+        return maxLen;
     }
 
     /* Driver program to test above function */
