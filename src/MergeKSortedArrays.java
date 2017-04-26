@@ -97,7 +97,8 @@ public class MergeKSortedArrays
                 System.out.print(result[i] + " ");
             }
             System.out.print(result[i]);
-        } finally
+        }
+        finally
         {
             if (scanner != null)
             {
