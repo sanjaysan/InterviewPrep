@@ -20,19 +20,20 @@ public class AddBinaryStrings
         String result = "";
         int sum = 0;
 
-        for (int i = lenA - 1, j = lenB - 1; (i >=0 || j >= 0 || sum == 1); i--, j--)
+        for (int i = lenA - 1, j = lenB - 1; (i >= 0 || j >= 0 || sum == 1); i--, j--)
         {
             sum += (i >= 0) ? (a.charAt(i) - '0') : 0;
             sum += (j >= 0) ? (b.charAt(j) - '0') : 0;
 
-            result = (char)(sum % 2 + '0') + result;
+            result = (char) (sum % 2 + '0') + result;
             sum /= 2;
         }
         return result;
     }
-    public static void main (String [] args)
+
+    public static void main(String[] args)
     {
-        String a ="11", b ="1";
+        String a = "11", b = "1";
         String result = addBinary(a, b);
         System.out.println(result);
     }
