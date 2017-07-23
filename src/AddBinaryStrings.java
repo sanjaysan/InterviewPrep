@@ -5,25 +5,31 @@ public class AddBinaryStrings
 {
     private static String addBinary(String a, String b)
     {
-        String result = "";
-        int s = 0;
-        int i = a.length() - 1, j = b.length() - 1;
-
-        while (i >=0 || j >=0 || s == 1)
+        if (a == null || a.isEmpty())
         {
-            s += ((i >= 0) ? a.charAt(i) - '0' : 0);
-            s += ((j >=0) ? b.charAt(j) - '0' : 0);
+            return b;
+        }
+        if (b == null || b.isEmpty())
+        {
+            return a;
+        }
 
-            result = (char) (s % 2 +'0') + result;
+        int lenA = a.length();
+        int lenB = b.length();
 
-            s /= 2;
+        String result = "";
+        int sum = 0;
 
-            i--;
-            j--;
+        for (int i = lenA - 1, j = lenB - 1; (i >=0 || j >= 0 || sum == 1); i--, j--)
+        {
+            sum += (i >= 0) ? (a.charAt(i) - '0') : 0;
+            sum += (j >= 0) ? (b.charAt(j) - '0') : 0;
+
+            result = (char)(sum % 2 + '0') + result;
+            sum /= 2;
         }
         return result;
     }
-
     public static void main (String [] args)
     {
         String a ="11", b ="1";
