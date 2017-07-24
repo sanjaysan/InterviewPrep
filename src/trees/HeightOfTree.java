@@ -1,4 +1,4 @@
-import java.util.Queue;
+package trees;
 
 /**
  * Created by sanjay on 1/7/17.
@@ -118,7 +118,7 @@ class HeightOfTree
         }
     }
 
-    /* Driver program to test above functions */
+    /* Driver program to testabove functions */
     public static void main(String[] args)
     {
         HeightOfTree tree = new HeightOfTree();
