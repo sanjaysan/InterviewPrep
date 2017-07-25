@@ -1,3 +1,5 @@
+package strings;
+
 import java.util.Stack;
 
 /**
@@ -7,17 +9,17 @@ public class LongestValidParentheses
 {
     public static int longestValidParentheses(String s)
     {
-        Stack<int[]> stack = new Stack<int[]>();
+        Stack<int []> stack = new Stack<int []>();
         int result = 0;
-
-        for (int i = 0; i <= s.length() - 1; i++)
+        for (int i = 0; i < s.length(); i++)
         {
             char c = s.charAt(i);
             if (c == '(')
             {
                 int[] a = {i, 0};
                 stack.push(a);
-            } else
+            }
+            else
             {
                 if (stack.empty() || stack.peek()[1] == 1)
                 {
@@ -27,27 +29,26 @@ public class LongestValidParentheses
                 else
                 {
                     stack.pop();
-                    int currentLen = 0;
-                    if (stack.empty())
+                    int currLen = 0;
+                    if (!stack.empty())
                     {
-                        currentLen = i + 1;
+                        currLen = i - stack.peek()[0];
                     }
                     else
                     {
-                        currentLen = i - stack.peek()[0];
+                        currLen = i + 1;
                     }
-                    result = Math.max(result, currentLen);
+                    result = Math.max(currLen, result);
                 }
             }
         }
-
         return result;
     }
 
     public static void main(String[] args)
     {
         LongestValidParentheses lvp = new LongestValidParentheses();
-        String s = ")()())";
+        String s = "()(()))))";
         int res = lvp.longestValidParentheses(s);
         System.out.println(res);
     }

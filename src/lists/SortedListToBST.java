@@ -1,4 +1,4 @@
-import sun.reflect.generics.tree.Tree;
+package lists;
 
 /**
  * Created by sanjay on 1/18/17.
@@ -101,10 +101,10 @@ public class SortedListToBST
         h = new ListNode(1);
         h.next = new ListNode(2);
         h.next.next = new ListNode(3);
-//        h.next.next.next = new ListNode(4);
-//        h.next.next.next.next = new ListNode(5);
-//        h.next.next.next.next.next = new ListNode(6);
-//        h.next.next.next.next.next.next = new ListNode(7);
+//        h.next.next.next = new lists.ListNode(4);
+//        h.next.next.next.next = new lists.ListNode(5);
+//        h.next.next.next.next.next = new lists.ListNode(6);
+//        h.next.next.next.next.next.next = new lists.ListNode(7);
         SortedListToBST slb = new SortedListToBST();
         TreeNode root = slb.sortedListToBST(h);
         slb.inOrderTraversal(root);

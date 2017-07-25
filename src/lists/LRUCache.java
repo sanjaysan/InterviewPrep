@@ -1,5 +1,6 @@
+package lists;
+
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by sanjay on 12/30/16.
