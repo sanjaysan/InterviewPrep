@@ -1,4 +1,5 @@
-import java.io.*;
+package arrays;
+
 import java.util.*;
 
 class ArrayContainer implements Comparable<ArrayContainer>

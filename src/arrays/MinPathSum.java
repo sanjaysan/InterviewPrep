@@ -1,4 +1,4 @@
-/**
+package arrays; /**
  * Created by sanjay on 12/26/16.
  */
 /* Java program for Dynamic Programming implementation

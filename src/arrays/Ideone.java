@@ -1,4 +1,4 @@
-/**
+package arrays; /**
  * Created by sanjay on 2/10/17.
  */
 /* package whatever; // don't place package name! */
