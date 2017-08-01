@@ -5,45 +5,43 @@ package trees;
  */
 public class TreePathSum
 {
-    static class Node
+    static class TreeNode
     {
-        int data;
-        Node left, right;
+        int val;
+        TreeNode left, right;
 
-        Node(int item)
+        TreeNode(int item)
         {
-            data = item;
-            left = right = null;
+            val = item;
         }
     }
 
-    Node root;
-
-    private boolean hasPathSum(Node node, int sum)
+    private static boolean hasPathSum(TreeNode root, int sum)
     {
-        if (node == null)
+        if (root == null)
         {
             return false;
         }
-        if (node.data == sum && node.left == null && node.right == null)
+
+        if (root.val == sum && (root.left == null && root.right == null))
         {
             return true;
         }
-        return hasPathSum(node.left, sum - node.data) || hasPathSum(node.right, sum - node.data);
+
+        return hasPathSum(root.left, (sum - root.val)) || hasPathSum(root.right, (sum - root.val));
     }
 
     public static void main(String[] args)
     {
-        TreePathSum tree = new TreePathSum();
-
-        tree.root = new Node(10);
-        tree.root.left = new Node(8);
-        tree.root.left.left = new Node(3);
-        tree.root.left.right = new Node(5);
-        tree.root.right = new Node(2);
-        tree.root.right.right = new Node(2);
+        TreeNode root = new TreeNode(10);
+        root.left = new TreeNode(8);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(5);
+        root.right = new TreeNode(2);
+        root.right.left = new TreeNode(2);
         //int result = tree.findKthSmallestElement(tree.root, 3);
-        boolean result = tree.hasPathSum(tree.root, 23);
+
+        boolean result = hasPathSum(root, 14);
         System.out.println(result);
     }
 }
