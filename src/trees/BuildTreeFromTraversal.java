@@ -58,17 +58,17 @@ public class BuildTreeFromTraversal
     {
         if (root != null)
         {
+            if (root.left != null)
+            {
+                inorderTraversal(root.left);
+            }
+
             System.out.print(root.val + " ");
-        }
 
-        if (root.left != null)
-        {
-            inorderTraversal(root.left);
-        }
-
-        if (root.right != null)
-        {
-            inorderTraversal(root.right);
+            if (root.right != null)
+            {
+                inorderTraversal(root.right);
+            }
         }
     }
 
