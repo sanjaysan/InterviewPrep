@@ -48,11 +48,13 @@ class HeightOfTree
     {
         if (root != null)
         {
-            System.out.println(root.data);
             if (root.left != null)
             {
                 InorderTraversal(root.left);
             }
+
+            System.out.println(root.data);
+
             if (root.right != null)
             {
                 InorderTraversal(root.right);
