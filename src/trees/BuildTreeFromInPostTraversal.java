@@ -3,7 +3,7 @@ package trees;
 /**
  * Created by sanjay on 8/1/17.
  */
-public class BuildTreeFromTraversal
+public class BuildTreeFromInPostTraversal
 {
     static class TreeNode
     {
