@@ -16,16 +16,26 @@ public class BuildTreeFromTraversal
         }
     }
 
-    private static TreeNode buildTreeHelper(int[] inorder, int inStart, int inEnd,
-                                            int[] postorder, int postStart, int postEnd)
+    static class Index
     {
-        if (inStart > inEnd || postStart > postEnd)
+        int index;
+    }
+
+    private static TreeNode buildTreeHelper(int[] inorder, int inStart, int inEnd,
+                                            int[] postorder, Index postIndex)
+    {
+        if (inStart > inEnd)
         {
             return null;
         }
 
-        int rootVal = postorder[postEnd];
+        int rootVal = postorder[postIndex.index--];
         TreeNode root = new TreeNode(rootVal);
+
+        if (inStart == inEnd)
+        {
+            return root;
+        }
 
         int rootIndex = 0;
         for (int i = 0; i < inorder.length; i++)
@@ -36,12 +46,8 @@ public class BuildTreeFromTraversal
                 break;
             }
         }
-
-        root.left = buildTreeHelper(inorder, inStart, rootIndex - 1,
-                postorder, postStart, postStart + rootIndex - (inStart + 1));
-
-        root.right = buildTreeHelper(inorder, rootIndex + 1, inEnd,
-                postorder, postStart + rootIndex - inStart, postEnd - 1);
+        root.right = buildTreeHelper(inorder,rootIndex + 1, inEnd, postorder, postIndex);
+        root.left = buildTreeHelper(inorder, inStart, rootIndex - 1, postorder, postIndex);
 
         return root;
     }
@@ -49,9 +55,10 @@ public class BuildTreeFromTraversal
     private static TreeNode buildTree(int[] inorder, int[] postorder)
     {
         int inStart = 0, inEnd = inorder.length - 1;
-        int postStart = 0, postEnd = postorder.length - 1;
+        Index postIndex = new Index();
+        postIndex.index = postorder.length - 1;
 
-        return buildTreeHelper(inorder, inStart, inEnd, postorder, postStart, postEnd);
+        return buildTreeHelper(inorder, inStart, inEnd, postorder, postIndex);
     }
 
     private static void inorderTraversal(TreeNode root)
