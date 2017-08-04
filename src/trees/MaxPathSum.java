@@ -40,7 +40,6 @@ public class MaxPathSum
         return max[0];
     }
 
-
     public static void main (String[] args)
     {
         TreeNode root = new TreeNode(10);
