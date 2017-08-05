@@ -3,23 +3,17 @@ package trees;
 /**
  * Created by sanjay on 2/11/17.
  */
-/* Java program to determine if binary tree is
-   height balanced or not */
-
-/* A binary tree node has data, pointer to left child,
-   and a pointer to right child */
 
 class CheckBalancedTree
 {
-    static class Node
+    static class TreeNode
     {
-        int data;
-        Node left, right;
+        int val;
+        TreeNode left, right;
 
-        Node(int d)
+        TreeNode(int item)
         {
-            data = d;
-            left = right = null;
+            val = item;
         }
     }
 
@@ -28,66 +22,52 @@ class CheckBalancedTree
         int height;
     }
 
-    Node root;
-    /* UTILITY FUNCTIONS TO TEST isBalanced() FUNCTION */
-    /*  The function Compute the "height" of a tree. Height is the
-        number of nodes along the longest path from the root node
-        down to the farthest leaf node.*/
-    int height(Node node)
+    private static boolean isBalancedHelper(TreeNode root, Height height)
     {
-        /* base case tree is empty */
-        if (node == null)
+        if (root == null)
         {
-            return 0;
-        }
-
-        /* If tree is not empty then height = 1 + max of left
-         height and right heights */
-        return 1 + Math.max(height(node.left), height(node.right));
-    }
-
-    /* Returns true if binary tree with root as root is height-balanced */
-    boolean isBalanced(Node node, Height height)
-    {
-        if (node == null)
-        {
-            height.height = 0;
             return true;
         }
 
-        Height lheight = new Height();
-        Height rheight = new Height();
+        Height lHeight = new Height();
+        Height rHeight = new Height();
 
-        boolean l = isBalanced(node.left, lheight);
-        boolean r = isBalanced(node.right, rheight);
+        boolean isLSubTreeBalanced = isBalancedHelper(root.left, lHeight);
+        boolean isRSubTreeBalanced = isBalancedHelper(root.right, rHeight);
 
-        int lh = lheight.height;
-        int rh = rheight.height;
+        int lSubTreeHeight = lHeight.height;
+        int rSubTreeHeight = rHeight.height;
 
-        height.height = Math.max(lh, rh) + 1;
+        height.height = Math.max(lSubTreeHeight, rSubTreeHeight) + 1;
 
-        if (Math.abs(lh - rh) > 1)
+        if (Math.abs(lSubTreeHeight - rSubTreeHeight) > 1)
         {
             return false;
         }
-        else
+        return (isLSubTreeBalanced && isRSubTreeBalanced);
+    }
+
+    private static boolean isBalanced(TreeNode root)
+    {
+        if (root == null)
         {
-            return l && r;
+            return true;
         }
+
+        Height height = new Height();
+        return isBalancedHelper(root, height);
     }
 
     public static void main(String args[])
     {
-        Height height = new Height();
-        CheckBalancedTree tree = new CheckBalancedTree();
-        tree.root = new Node(1);
-        tree.root.left = new Node(2);
-        tree.root.right = new Node(3);
-        tree.root.left.left = new Node(4);
-        tree.root.left.right = new Node(5);
-        tree.root.left.left.left = new Node(8);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.left.left.left = new TreeNode(8);
 
-        if (tree.isBalanced(tree.root, height))
+        if (isBalanced(root))
             System.out.println("Tree is balanced");
         else
             System.out.println("Tree is not balanced");
