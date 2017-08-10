@@ -9,62 +9,65 @@ import java.util.List;
 public class RootLeafPaths
 {
 
-    static class Node
+    static class TreeNode
     {
-        int data;
-        Node left, right;
+        int val;
+        TreeNode left, right;
 
-        Node(int item)
+        TreeNode(int item)
         {
-            data = item;
-            left = right = null;
+            val = item;
         }
     }
-    Node root;
 
-    private void printPaths(List<Integer> path)
+    private static void binaryTreePathsHelper(TreeNode root, List<String> rootLeafPaths, StringBuilder sb)
     {
-        for (int a : path)
+        sb.append(String.valueOf(root.val));
+
+        if (root.left == null && root.right == null)
         {
-            System.out.print(a + " ");
-        }
-        System.out.println();
-    }
-    private void printRootLeafPaths(Node node, List<Integer> path)
-    {
-        if ( node == null )
-        {
+            rootLeafPaths.add(sb.toString());
             return;
         }
-        path.add(node.data);
-        if ( node.left == null && node.right == null)
-        {
-            printPaths(path);
-        }
 
-        if (node.left != null)
+        if (root.left != null)
         {
-            printRootLeafPaths(node.left, path);
-            path.remove(path.size() - 1);
-        }
+            sb.append("->");
+            binaryTreePathsHelper(root.left, rootLeafPaths, sb);
+            int length = sb.lastIndexOf("->");
+            sb.setLength(length);
 
-        if (node.right != null)
-        {
-            printRootLeafPaths(node.right, path);
-            path.remove(path.size() - 1);
         }
+        if (root.right != null)
+        {
+            sb.append("->");
+            binaryTreePathsHelper(root.right, rootLeafPaths, sb);
+            int length = sb.lastIndexOf("->");
+            sb.setLength(length);
+        }
+    }
+
+    private static List<String> binaryTreePaths(TreeNode root)
+    {
+        List<String> paths = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder();
+        if (root == null)
+        {
+            return paths;
+        }
+        binaryTreePathsHelper(root, paths, sb);
+        return paths;
     }
 
     public static void main(String[] args)
     {
-        RootLeafPaths tree = new RootLeafPaths();
-
-        tree.root = new Node(10);
-        tree.root.left = new Node(8);
-        tree.root.left.left = new Node(3);
-        tree.root.left.right = new Node(5);
-        tree.root.right = new Node(2);
-        tree.root.right.left = new Node(2);
-        tree.printRootLeafPaths(tree.root, new ArrayList<Integer>());
+        TreeNode root = new TreeNode(10);
+        root.left = new TreeNode(8);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(5);
+        root.right = new TreeNode(2);
+        root.right.left = new TreeNode(2);
+        List<String> result = binaryTreePaths(root);
+        System.out.println(result);
     }
 }
