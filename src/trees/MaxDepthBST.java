@@ -3,7 +3,7 @@ package trees;
 /**
  * Created by sanjay on 8/10/17.
  */
-public class MaDepthBST
+public class MaxDepthBST
 {
     static class TreeNode
     {
