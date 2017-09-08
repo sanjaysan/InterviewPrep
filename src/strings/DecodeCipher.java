@@ -13,7 +13,6 @@ public class DecodeCipher
         char[] decryptedMessage = new char[encodedMessage.length];
 
         char[] key = "8251220".toCharArray();
-        //char[] key = {18, 24, 21, 25, 24, 24, 0};
 
         int j = 0;
         for (int i = 0; i < encodedMessage.length; i++)
