@@ -3,10 +3,12 @@ package strings;
 /**
  * Created by sanjay on 9/7/17.
  */
-import java.util.*;
+
+import java.util.Arrays;
+
 public class DecodeCipher
 {
-    public static void main (String[] args)
+    public static void main(String[] args)
     {
         String encrypted_message = "Bjj rwkcs";
         char[] encodedMessage = encrypted_message.toCharArray();
@@ -17,7 +19,7 @@ public class DecodeCipher
         int j = 0;
         for (int i = 0; i < encodedMessage.length; i++)
         {
-            if(Character.isLetter(encodedMessage[i]))
+            if (Character.isLetter(encodedMessage[i]))
             {
                 int decrementer = (int) encodedMessage[i] - (int) (key[j] - '0');
                 if (Character.isUpperCase(encodedMessage[i]))
