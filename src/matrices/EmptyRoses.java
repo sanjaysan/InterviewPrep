@@ -1,8 +1,5 @@
 package matrices;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by sanjay on 9/10/17.
  */
@@ -23,7 +20,7 @@ class EmptyRoses
                 result[k][j - 1] = 1;
             }
         }
-        
+
         for (int i = 0; i < result.length; i++)
         {
             int count = 0;
