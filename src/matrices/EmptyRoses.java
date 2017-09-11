@@ -23,8 +23,7 @@ class EmptyRoses
                 result[k][j - 1] = 1;
             }
         }
-
-        List<Integer> list = new ArrayList<Integer>();
+        
         for (int i = 0; i < result.length; i++)
         {
             int count = 0;
