@@ -7,37 +7,48 @@ public class StringToInteger
 {
     private static int myAtoi(String str)
     {
-        if (str == null || str.equals(""))
+        if (str == null || str.length() < 1)
         {
             return 0;
         }
 
-        int a [] = new int[5];
-        int num = 0;
-        int len = str.length();
-        int j = 0;
-        for (int i = len - 1; i >= 0; i--)
+        str = str.trim();
+
+        char flag = '+';
+        int i = 0;
+
+        if (str.charAt(0) == '-')
         {
-            char c;
-            if (Character.isDigit(c = str.charAt(i)))
-            {
-                num += (c - '0') * Math.pow(10, j);
-                j++;
-            }
-            else
-            {
-                if (i > 0 && Character.isDigit(str.charAt(i - 1)))
-                {
-                    num = 0;
-                    j = 0;
-                }
-                else
-                {
-                    j = 0;
-                }
-            }
+            flag = '-';
+            i++;
         }
-        return num;
+        else if (str.charAt(0) == '+')
+        {
+            i++;
+        }
+
+        double result = 0;
+        while (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9')
+        {
+            result = result * 10 + (str.charAt(i) - '0');
+            i++;
+        }
+
+        if (flag == '-')
+        {
+            result = -result;
+        }
+
+        if (result > Integer.MAX_VALUE)
+        {
+            return Integer.MAX_VALUE;
+        }
+        else if (result < Integer.MIN_VALUE)
+        {
+            return Integer.MIN_VALUE;
+        }
+
+        return (int) result;
     }
 
     public static void main(String [] args)
