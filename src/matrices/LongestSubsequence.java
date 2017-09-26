@@ -11,8 +11,8 @@ public class LongestSubsequence
 
         int[] xcoord = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] ycoord = {-1, 0, 1, -1, 1, -1, 0, 1};
-        int max = Integer.MIN_VALUE;
 
+        int max = 0;
         for (int k = 0; k < 8; k++)
         {
             int x = i + xcoord[k];
@@ -27,8 +27,10 @@ public class LongestSubsequence
             }
         }
         visited[i][j] = false;
+
         return 1 + max;
     }
+
     private static int longestSequence(int[][] grid)
     {
         if (grid == null || grid.length == 0)
@@ -53,11 +55,9 @@ public class LongestSubsequence
         return maxLen;
     }
 
-    public static void main (String[] args)
+    public static void main(String[] args)
     {
-        int[][] a ={{8, 2, 4},
-                {0, 6, 1},
-                {3, 7, 9}};
+        int[][] a = {{8, 2, 4}, {0, 6, 1}, {3, 7, 9}};
         int result = longestSequence(a);
         System.out.println(result);
     }
