@@ -1,5 +1,7 @@
 package trees;
 
+import sun.reflect.generics.tree.Tree;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -29,6 +31,22 @@ public class MinDepthOfBST
             this.node = node;
             this.depth = depth;
         }
+    }
+
+    private static int minDepthDFS(TreeNode root)
+    {
+        if (root == null)
+        {
+            return 0;
+        }
+
+        int l = minDepth(root.left);
+        int r = minDepth(root.right);
+        if (l != 0 && r != 0)
+        {
+            return 1 + Math.min(l, r);
+        }
+        return 1 + ((l == 0) ? r : l);
     }
 
     private static int minDepth(TreeNode root)
