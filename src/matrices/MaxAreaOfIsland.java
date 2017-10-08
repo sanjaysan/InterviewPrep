@@ -35,9 +35,8 @@ public class MaxAreaOfIsland
             {
                 if (grid[i][j] == 1)
                 {
-                    int count = 1;
                     grid[i][j] = -1;
-                    result = Math.max(result, dfs(grid, i, j, m, n, count));
+                    result = Math.max(result, dfs(grid, i, j, m, n, 1));
                 }
             }
         }
