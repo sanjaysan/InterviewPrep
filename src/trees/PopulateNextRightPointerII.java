@@ -34,23 +34,33 @@ public class PopulateNextRightPointerII
 
             while (lastCurrent != null)
             {
-                if (currentHead == null)
+                if (lastCurrent.left != null)
                 {
-                    currentHead = lastCurrent.left;
-                    current = lastCurrent.left;
-                }
-                else
-                {
-                    current.next = lastCurrent.left;
-                    current = current.next;
-                }
-
-                if (currentHead != null)
-                {
-                    current.next = lastCurrent.right;
-                    current = current.next;
+                    if (currentHead == null)
+                    {
+                        currentHead = lastCurrent.left;
+                        current = lastCurrent.left;
+                    }
+                    else
+                    {
+                        current.next = lastCurrent.left;
+                        current = current.next;
+                    }
                 }
 
+                if (lastCurrent.right != null)
+                {
+                    if (currentHead == null)
+                    {
+                        currentHead = lastCurrent.right;
+                        current = lastCurrent.right;
+                    }
+                    else
+                    {
+                        current.next = lastCurrent.right;
+                        current = current.next;
+                    }
+                }
                 lastCurrent = lastCurrent.next;
             }
             lastHead = currentHead;
@@ -83,7 +93,6 @@ public class PopulateNextRightPointerII
         root.right = new TreeLinkNode(3);
         root.left.left = new TreeLinkNode(4);
         root.left.right = new TreeLinkNode(5);
-        root.right.left = new TreeLinkNode(6);
         root.right.right = new TreeLinkNode(7);
 
         connect(root);
