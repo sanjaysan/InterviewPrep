@@ -44,7 +44,7 @@ public class DegreeOfAnArray
                                  .map(Integer::new)
                                  .orElseThrow(() -> new RuntimeException("No value"));
 
-        int minLength = Integer.MAX_VALUE, length = 0;
+        int minLength = Integer.MAX_VALUE, length;
         for (int i = 0; i < nums.length; i++)
         {
             if (map.get(nums[i]).count == arrayDegree)
