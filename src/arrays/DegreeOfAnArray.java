@@ -47,7 +47,7 @@ public class DegreeOfAnArray
         int minLength = Integer.MAX_VALUE, length = 0;
         for (int i = 0; i < nums.length; i++)
         {
-            if (map.get(nums[i]).count == arrayDegree.intValue())
+            if (map.get(nums[i]).count == arrayDegree)
             {
                 length = map.get(nums[i]).index - i + 1;
                 if (length < minLength)
