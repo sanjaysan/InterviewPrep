@@ -30,12 +30,12 @@ public class PermutationsOfString
         {
             for (int i = 0; i <= word.length(); i++)
             {
-                permutations.add(inserCharAt(word, first, i));
+                permutations.add(insertCharAt(word, first, i));
             }
         }
         return permutations;
     }
-    private static String inserCharAt(String word, char c, int i)
+    private static String insertCharAt(String word, char c, int i)
     {
         String start = word.substring(0, i);
         String end = word.substring(i);
