@@ -4,14 +4,18 @@ package strings;
  * Created by sanjay on 11/28/17.
  */
 
-class RepeatedStringMatch {
-    private static int repeatedStringMatch(String A, String B) {
+class RepeatedStringMatch
+{
+    private static int repeatedStringMatch(String A, String B)
+    {
         if (B == null || B.isEmpty())
+        {
             return -1;
+        }
 
         String C = "";
         int count = 0;
-        while(!C.contains(B))
+        while (!C.contains(B))
         {
             C += A;
             count++;
